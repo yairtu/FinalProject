@@ -1,0 +1,13 @@
+{% for ticker in tickers.items %}
+    {% set price = get_price(ticker.ticker) %}
+    {% if price != 'No price available for this coin' %}
+        <tr>
+            <td>{{ ticker.ticker }}</td>
+            <td>${{ price }}</td>
+            <td><a class="btn btn-outline-info"
+                   href="{{ url_for('main.buy', ticker=ticker.ticker) }}">Buy</a>
+                <a class="btn btn-outline-danger" href="{{ url_for('main.sell', ticker=ticker.ticker) }}">Sell</a>
+            </td>
+        </tr>
+    {% endif %}
+{% endfor %}

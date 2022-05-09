@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="" class="justify-content-evenly d-flex flex-row mt-5 mq1000"
+         style="width: 95vw; height: 80vh; margin: auto;">
+        <div class="tradingview-widget">
+            <div class="" id="analytics-platform" style=" width: 70vw; height: 100%"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+            <script type="text/javascript">
+                new TradingView.widget(
+                    {
+                        "container_id": "analytics-platform",
+                        "autosize": true,
+                        "symbol": "KUCOIN:{{ crypto.kucoin_price_name }}",
+                        "interval": "D",
+                        "timezone": "exchange",
+                        "theme": "dark",
+                        "style": "0",
+                        "toolbar_bg": "#f1f3f6",
+                        "withdateranges": true,
+                        "allow_symbol_change": true,
+                        "save_image": false,
+                        "details": true,
+                        "hotlist": true,
+                        "calendar": true,
+                        "locale": "en"
+                    }
+                );
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+        <div class="card bg-dark pt-5 pb-5" style="height: 100%">
+            <div class="card-body">
+                <p class="fs-2">{{ crypto.ticker }}</p>
+                <p hx-get="{{ url_for('main.buy', ticker=crypto.ticker) }}" hx-trigger="every 5s"
+                   hx-swap="innerHTML">Price: {{ price }}</p>
+                <p>Current holding quantity: {{ holding }} </p>
+                <p>Value: ${{ value }}</p>
+                <p>Available USD: ${{ current_user.usd }}</p>
+                <form action="" method="POST">
+                    {{ w_form.hidden_tag() }}
+                    {{ w_form.submit(class='btn btn-outline-success') }}
+                </form>
+            </div>
+            <div class="card-footer flex text-center">
+                <p>Amount to sell:</p>
+                <form class="justify-content-center row" action="" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="row col-auto">
+                        {{ form.amount(class="col form-control") }}
+                        {{ form.submit(class="col btn btn-outline-info") }}
+                    </div>
+                    <div class="col-auto">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

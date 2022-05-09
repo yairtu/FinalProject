@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <h1 class="text-center">Top 50 Stock/Crypto News Articles</h1>
+        {% for item in news %}
+            <div class="card row bg-dark m-3 p-4">
+                <p>Source: <i>{{ item['source'] }}</i></p>
+                <h3 class="text-white"><a target="_blank" style="text-decoration:none;" class="text-white"
+                                          href="{{ item['url'] }}">{{ item['headline'] }}</a></h3>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                {% if item['images']|length > 0 %}
+                    {% for img in item['images'] %}
+                        {% if img['size'] == 'small' %}
+                            <img style="height: 50%; width: 50%" src="{{ img['url'] }}"
+                                 alt="">
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <p>{{ item['summary'] }}</p>
+                <p>Related Tickers: {% for ticker in item['symbols'] %} {{ ticker }} {% endfor %}</p>
+                <div class="">
+                    <a target="_blank" class="btn btn-outline-info btn-sm w-25" href="{{ item['url'] }}">Read
+                        Article</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

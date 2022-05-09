@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container container justify-content-center w-50">
+        <div class="card bg-dark mt-5 pb-5" style="height: 100%">
+            <div class="card-body">
+                <h3>Account Settings</h3>
+                <p>Username: {{ current_user.username }}</p>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                <p>Email Address: {{ current_user.email }}</p>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                <p>Date created: {{ current_user.created_date.strftime('%Y-%m-%d %H:%M') }}</p>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+                <a class="btn btn-outline-info" href="{{ url_for('user_bp.trades') }}">View trade history</a>
+                <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            </div>
+            <div class="card-footer flex">
+                <form class="justify-content-center row" action="" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="row col">
+                        {{ form.password(class="col form-control") }}
+                        {{ form.submit(class="btn col btn-outline-info btn-sm") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

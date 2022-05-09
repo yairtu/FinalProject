@@ -1,0 +1,60 @@
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: lightblue;
+    text-align: left;
+    /*background-color: #fff;*/
+    background: #16222A; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3A6073, #16222A); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed
+}
+
+.fa {
+    color: white
+}
+
+h1 {
+    margin: 50px
+}
+
+td {
+    width: 33.3%;
+}
+
+.portfolio-table {
+    width: 20%;
+}
+
+
+@media (max-width: 575.98px) {
+    .mq1000 {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .mq1000 {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .mq1000 {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 1199.98px) {
+    .mq1000 {
+        display: flex;
+        flex-direction: column;
+    }
+
+}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block css %}href="{{ url_for('static', filename='style.css') }}"{% endblock %}
+{% block content %}
+    <div class="container mt-5 text-center">
+        <h1 class="mb-3">All Cryptocurrencies</h1>
+        <table class="table table-dark table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Ticker</th>
+                <th scope="col">Current Price:</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody  hx-get="{{ url_for('main.crypto', page=tickers.page) }}" hx-trigger="every 10" hx-swap="innerHTML">
+            {% for ticker in tickers.items %}
+                {% set price = get_price(ticker.ticker) %}
+                {% if price != 'No price available for this coin' %}
+                    <tr>
+                        <td>{{ ticker.ticker }}</td>
+                        <td>${{ price }}</td>
+                        <td><a class="btn btn-outline-info"
+                               href="{{ url_for('main.buy', ticker=ticker.ticker) }}">Buy</a>
+                            <a class="btn btn-outline-danger" href="{{ url_for('main.sell', ticker=ticker.ticker) }}">Sell</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+        <nav class="nav justify-content-center" aria-label="...">
+            <ul class="pagination">
+                {% for page_num in tickers.iter_pages(left_edge=4, right_edge=3, left_current=2, right_current=2) %}
+                    {% if page_num %}
+                        {% if tickers.page == page_num %}
+                            <li class="btn btn-info m-1"><a class=""
+                                                                     href="{{ url_for('main.crypto', page=page_num) }}">{{ page_num }}</a>
+                            </li>
+                        {% else %}
+                            <li class="btn btn-outline-info m-1"><a class=""
+                                                                     href="{{ url_for('main.crypto', page=page_num) }}">{{ page_num }}</a>
+                            </li>
+                        {% endif %}
+                    {% else %}
+                        <li class="btn btn-outline-info m-1"><a class="" href="">...</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

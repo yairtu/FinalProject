@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block css %}href="{{ url_for('static', filename='login.css') }}"{% endblock %}
+{% block search %}
+{% endblock %}
+{% block content %}
+    <div class="loginpage rounded text-center">
+        <form class="form-signin" method="POST">
+            {{ login_form.hidden_tag() }}
+            <h1 class="h3 m-3 font-weight-normal">Please sign in</h1>
+            {{ login_form.username(class="form-control", placeholder="Username") }}
+            {{ login_form.password(class="form-control", id="inputPassword", placeholder="Password") }}
+            <div>
+                {{ login_form.remember }}
+                {{ login_form.remember.label }}
+            </div>
+            {{ login_form.login(class="btn btn-outline-primary btn-md mt-2") }}
+            <p class="mt-5 mb-3 text-muted">No account? <a href="{{ url_for('user_bp.register') }}">Sign up</a>
+                <br>Forgot your password? <a href="{{ url_for('user_bp.reset_password_request') }}">Click to reset</a>
+            </p>
+        </form>
+    </div>
+{% endblock %}

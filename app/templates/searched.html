@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block css %}href="{{ url_for('static', filename='style.css') }}"{% endblock %}
+{% block content %}
+    <div class="container text-center">
+        <h1>Search Results:</h1>
+        {% if crypto|length > 0 %}
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Ticker</th>
+                    <th scope="col">Current Price:</th>
+                    <th scope="col">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for c in crypto %}
+                    <tr>
+                        <td>{{ c.ticker }}</td>
+                        <td>${{ get_price(c.ticker) }}</td>
+                        <td><a class="btn btn-outline-info" href="{{ url_for('main.buy', ticker=c.ticker) }}">Buy</a>
+                            <a class="btn btn-outline-danger"
+                               href="{{ url_for('main.sell', ticker=c.ticker) }}">Sell</a>
+                            <a class="btn btn-outline-success" href="{{ url_for('user_bp.watchlist', ticker=c.ticker) }}">Add to watchlist</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h2>No results found</h2>
+
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block css %}href="{{ url_for('static', filename='start_trading.css') }}"{% endblock %}
+{% block content %}
+    <h1>Level up your cryptocurrency <br>trading skills, risk-free.</h1>
+    <a id="btn" class="btn btn-outline-info" href="{{ url_for('main.crypto') }}">Start Trading</a>
+{% endblock %}
+

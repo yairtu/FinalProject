@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container mt-5 text-center">
+        {% if not watchlist %}
+            <p class="fs-1">Nothing currently in your Watchlist</p>
+            <a class="btn btn-outline-info m-3" href="{{ url_for('main.crypto') }}">View all cryptos</a>
+        {% else %}
+            <h1 class="mb-3">My Watchlist</h1>
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Ticker</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in watchlist %}
+                    <tr>
+                        <td>{{ item.crypto.ticker }}</td>
+                        <td>{{ get_price(item.crypto.ticker) }}</td>
+                        <td><a class="btn btn-outline-warning"
+                               href="{{ url_for('user_bp.delete_from_watchlist', item_id=item.id) }}">Remove from
+                            Watchlist</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

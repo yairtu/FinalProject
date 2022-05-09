@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block css %}href="{{ url_for('static', filename='login.css') }}"{% endblock %}
+{% block search %}
+{% endblock %}
+{% block content %}
+    <div class="loginpage rounded text-center">
+        <form class="form-signin" method="POST">
+            {{ registration_form.hidden_tag() }}
+            <h1 class="h3 m-3 font-weight-normal">Please Register</h1>
+
+            {% if registration_form.email.errors %}
+                {{ registration_form.email(class="form-control form-control-lg is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in registration_form.email.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ registration_form.email(class="form-control", placeholder="Email address") }}
+            {% endif %}
+
+            <div class="form-group">
+                {% if registration_form.username.errors %}
+                    {{ registration_form.username(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in registration_form.username.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ registration_form.username(class="form-control", placeholder="Username") }}
+                {% endif %}
+                <div class="form-group">
+                    {% if registration_form.password.errors %}
+                        {{ registration_form.password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in registration_form.password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ registration_form.password(class="form-control", id="inputPassword", placeholder="Password") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {% if registration_form.confirm_password.errors %}
+                        {{ registration_form.confirm_password(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in registration_form.confirm_password.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ registration_form.confirm_password(class="form-control", id="inputPassword", placeholder="Confirm Password") }}
+                    {% endif %}
+                </div>
+                {{ registration_form.register(class="btn btn-outline-primary btn-md mt-2") }}
+                <p class="mt-5 mb-3 text-muted">Already have an account? <a href="{{ url_for('user_bp.login') }}">Log in</a></p>
+            </div>
+        </form>
+    </div>
+{% endblock %}

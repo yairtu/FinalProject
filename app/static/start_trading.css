@@ -1,0 +1,21 @@
+body{
+     background: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80'); /* fallback for old browsers */
+}
+
+h1{
+    margin-top: 12%;
+    margin-left: 5%;
+    color: white;
+    font-size: 6rem
+}
+
+#btn{
+    margin-top: 2%;
+     margin-left: 5%;
+    width: 180px;
+    height: 40px
+}
+
+.fa{
+     color:white;
+}

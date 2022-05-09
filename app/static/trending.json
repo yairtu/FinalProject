@@ -1,0 +1,110 @@
+{
+  'coins': [
+    {
+      'item': {
+        'id': 'vempire-ddao',
+        'coin_id': 18074,
+        'name': 'vEmpire DDAO',
+        'symbol': 'VEMP',
+        'market_cap_rank': 886,
+        'thumb': 'https://assets.coingecko.com/coins/images/18074/thumb/Ay5nuny.png?1630380510',
+        'small': 'https://assets.coingecko.com/coins/images/18074/small/Ay5nuny.png?1630380510',
+        'large': 'https://assets.coingecko.com/coins/images/18074/large/Ay5nuny.png?1630380510',
+        'slug': 'vempire-ddao',
+        'price_btc': 2.8871567380019885e-06,
+        'score': 0
+      }
+    },
+    {
+      'item': {
+        'id': 'dotmoovs',
+        'coin_id': 15817,
+        'name': 'dotmoovs',
+        'symbol': 'MOOV',
+        'market_cap_rank': 737,
+        'thumb': 'https://assets.coingecko.com/coins/images/15817/thumb/dotmoovs-symbol-gradient.png?1635332626',
+        'small': 'https://assets.coingecko.com/coins/images/15817/small/dotmoovs-symbol-gradient.png?1635332626',
+        'large': 'https://assets.coingecko.com/coins/images/15817/large/dotmoovs-symbol-gradient.png?1635332626',
+        'slug': 'dotmoovs',
+        'price_btc': 9.766673216349918e-07,
+        'score': 1
+      }
+    },
+    {
+      'item': {
+        'id': 'spool-dao-token',
+        'coin_id': 21532,
+        'name': 'Spool DAO Token',
+        'symbol': 'SPOOL',
+        'market_cap_rank': 594,
+        'thumb': 'https://assets.coingecko.com/coins/images/21532/thumb/spool.png?1639388809',
+        'small': 'https://assets.coingecko.com/coins/images/21532/small/spool.png?1639388809',
+        'large': 'https://assets.coingecko.com/coins/images/21532/large/spool.png?1639388809',
+        'slug': 'spool-dao-token',
+        'price_btc': 0.00010438355293138513,
+        'score': 2
+      }
+    },
+    {
+      'item': {
+        'id': 'moonbeam',
+        'coin_id': 22459,
+        'name': 'Moonbeam',
+        'symbol': 'GLMR',
+        'market_cap_rank': 115,
+        'thumb': 'https://assets.coingecko.com/coins/images/22459/thumb/glmr.png?1641880985',
+        'small': 'https://assets.coingecko.com/coins/images/22459/small/glmr.png?1641880985',
+        'large': 'https://assets.coingecko.com/coins/images/22459/large/glmr.png?1641880985',
+        'slug': 'moonbeam',
+        'price_btc': 9.999548621079067e-05,
+        'score': 3
+      }
+    },
+    {
+      'item': {
+        'id': 'cult-dao',
+        'coin_id': 23331,
+        'name': 'Cult DAO',
+        'symbol': 'CULT',
+        'market_cap_rank': 385,
+        'thumb': 'https://assets.coingecko.com/coins/images/23331/thumb/quxZPrbC_400x400.jpg?1643880172',
+        'small': 'https://assets.coingecko.com/coins/images/23331/small/quxZPrbC_400x400.jpg?1643880172',
+        'large': 'https://assets.coingecko.com/coins/images/23331/large/quxZPrbC_400x400.jpg?1643880172',
+        'slug': 'cult-dao',
+        'price_btc': 1.43443943164236e-09,
+        'score': 4
+      }
+    },
+    {
+      'item': {
+        'id': 'frax-share',
+        'coin_id': 13423,
+        'name': 'Frax Share',
+        'symbol': 'FXS',
+        'market_cap_rank': 65,
+        'thumb': 'https://assets.coingecko.com/coins/images/13423/thumb/frax_share.png?1608478989',
+        'small': 'https://assets.coingecko.com/coins/images/13423/small/frax_share.png?1608478989',
+        'large': 'https://assets.coingecko.com/coins/images/13423/large/frax_share.png?1608478989',
+        'slug': 'frax-share',
+        'price_btc': 0.000809796930560907,
+        'score': 5
+      }
+    },
+    {
+      'item': {
+        'id': 'stepn',
+        'coin_id': 23597,
+        'name': 'STEPN',
+        'symbol': 'GMT',
+        'market_cap_rank': 86,
+        'thumb': 'https://assets.coingecko.com/coins/images/23597/thumb/gmt.png?1644658792',
+        'small': 'https://assets.coingecko.com/coins/images/23597/small/gmt.png?1644658792',
+        'large': 'https://assets.coingecko.com/coins/images/23597/large/gmt.png?1644658792',
+        'slug': 'stepn',
+        'price_btc': 5.337749553485947e-05,
+        'score': 6
+      }
+    }
+  ],
+  'exchanges': []
+}
