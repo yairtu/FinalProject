@@ -5,7 +5,6 @@ from flask_admin import Admin
 from flask_htmx import HTMX
 from flask_mail import Mail
 from app.config import Config
-
 from flask_bcrypt import Bcrypt
 from pycoingecko import CoinGeckoAPI
 from flask_login import LoginManager

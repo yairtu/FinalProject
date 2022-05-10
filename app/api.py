@@ -2,10 +2,12 @@ from pycoingecko import CoinGeckoAPI
 import os
 import requests
 from kucoin.client import Client
+from dotenv import load_dotenv
 
-ku_key = os.environ['ku_key']
-ku_secret = os.environ['ku_secret']
-ku_pass = os.environ['ku_pass']
+load_dotenv()
+ku_key = os.getenv('ku_key')
+ku_secret = os.getenv('ku_secret')
+ku_pass = os.getenv('ku_pass')
 #
 cg = CoinGeckoAPI()
 client = Client(ku_key, ku_secret, ku_pass)
@@ -36,8 +38,8 @@ def get_price(ticker):
 def get_news():
 	url = f"https://data.alpaca.markets/v1beta1/news?limit=50"
 	headers = {
-		'Apca-Api-Key-Id': os.environ['Apca-Api-Key-Id'],
-		'Apca-Api-Secret-Key': os.environ['Apca-Api-Secret-Key'],
+		'Apca-Api-Key-Id': os.getenv('Apca-Api-Key-Id'),
+		'Apca-Api-Secret-Key': os.getenv('Apca-Api-Secret-Key'),
 	}
 
 	news = requests.get(url, headers=headers).json()['news']
