@@ -36,12 +36,11 @@ def get_price(ticker):
 
 # Alpaca api get news
 def get_news():
-	url = f"https://data.alpaca.markets/v1beta1/news?limit=50"
+	url = "https://data.alpaca.markets/v1beta1/news?limit=50"
 	headers = {
 		'Apca-Api-Key-Id': os.getenv('Apca-Api-Key-Id'),
 		'Apca-Api-Secret-Key': os.getenv('Apca-Api-Secret-Key'),
 	}
-
 	news = requests.get(url, headers=headers).json()['news']
 	return news
 

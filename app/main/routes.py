@@ -52,7 +52,6 @@ def trending():
 @login_required
 def buy(ticker):
 	form = BuyForm()
-	watchlist = WatchlistForm()
 	crypto = Crypto.query.filter_by(ticker=ticker).first()
 	if htmx:
 		return render_template('partials/price.html', ticker=ticker)
@@ -61,12 +60,6 @@ def buy(ticker):
 	holding_amount = current_holding_amount(crypto.id)
 	holding_value = value(price=price, quantity=holding_amount)
 	max_buy_amount = current_usd / price
-	if watchlist.validate_on_submit():
-		item = Watchlist(user_id=current_user.id, crypto_id=crypto.id)
-		db.session.add(item)
-		db.session.commit()
-		flash('Added to your watchlist', 'info')
-		return redirect(url_for('user_bp.watchlist'))
 	if form.validate_on_submit():
 		if max_buy_amount < form.amount.data:
 			flash(f"You cannot exceed the maximum buy amount", "danger")
@@ -95,7 +88,6 @@ def buy(ticker):
 		'max_buy_amount': max_buy_amount,
 		'form': form,
 		'price': price,
-		'w_form': watchlist
 	}
 	return render_template('buy.html', **context)
 

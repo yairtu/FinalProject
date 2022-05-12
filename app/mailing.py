@@ -1,9 +1,6 @@
-from flask import render_template, url_for
+from flask import url_for
 from flask_mail import Message
 from app import mail
-import jwt
-import time
-from app import create_app
 from app.forms import ResetPasswordForm
 
 

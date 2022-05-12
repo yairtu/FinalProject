@@ -36,6 +36,10 @@ def create_app():
 	from app.api import get_price
 	from app.models import SecureModelView, User, Portfolio, Crypto, Trade
 
+	@login_manager.user_loader
+	def load_user(user_id):
+		return User.query.get(int(user_id))
+
 	from app.main.routes import main
 	from app.user.routes import user_bp
 	from app.error_handlers.routes import error_handlers
@@ -43,7 +47,7 @@ def create_app():
 	flask_app.register_blueprint(user_bp)
 	flask_app.register_blueprint(error_handlers)
 
-	admin.add_view(SecureModelView(User, db.session, name="admin_user_view"))
+	admin.add_view(SecureModelView(User, db.session))
 	admin.add_view(SecureModelView(Portfolio, db.session))
 	admin.add_view(SecureModelView(Crypto, db.session))
 	admin.add_view(SecureModelView(Trade, db.session))
