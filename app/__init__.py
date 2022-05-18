@@ -34,7 +34,7 @@ def create_app():
 
 	# from app import routes, error_handlers, models
 	from app.api import get_price
-	from app.models import SecureModelView, User, Portfolio, Crypto, Trade
+	from app.models import SecureModelView, User, Portfolio, Crypto, Trade, Watchlist
 
 	@login_manager.user_loader
 	def load_user(user_id):
@@ -51,6 +51,7 @@ def create_app():
 	admin.add_view(SecureModelView(Portfolio, db.session))
 	admin.add_view(SecureModelView(Crypto, db.session))
 	admin.add_view(SecureModelView(Trade, db.session))
+	admin.add_view(SecureModelView(Watchlist, db.session))
 
 	flask_app.jinja_env.globals.update(get_price=get_price)
 

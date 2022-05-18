@@ -36,10 +36,9 @@
                 <p>Current holding quantity: {{ holding }} </p>
                 <p>Value: ${{ value }}</p>
                 <p>Available USD: ${{ current_user.usd }}</p>
-                <form action="" method="POST">
-                    {{ w_form.hidden_tag() }}
-                    {{ w_form.submit(class='btn btn-outline-success') }}
-                </form>
+                <a class="btn btn-outline-success"
+                               href="{{ url_for('user_bp.add_to_watchlist', crypto_id=crypto.id) }}">Add to
+                            Watchlist</a>
             </div>
             <div class="card-footer flex text-center">
                 <p>Amount to sell:</p>

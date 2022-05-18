@@ -20,7 +20,6 @@
                         <td><a class="btn btn-outline-info" href="{{ url_for('main.buy', ticker=c.ticker) }}">Buy</a>
                             <a class="btn btn-outline-danger"
                                href="{{ url_for('main.sell', ticker=c.ticker) }}">Sell</a>
-                            <a class="btn btn-outline-success" href="{{ url_for('user_bp.watchlist', ticker=c.ticker) }}">Add to watchlist</a>
                         </td>
                     </tr>
                 {% endfor %}

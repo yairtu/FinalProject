@@ -4,10 +4,24 @@ from flask_login import current_user, login_required
 
 from app import db
 from app.forms import BuyForm, SellForm, WatchlistForm
-from app.models import Crypto, Trade, Portfolio, Watchlist
+from app.models import Crypto, Trade, Portfolio
 from app.api import get_news, get_price, get_trending
+import git
 
 main = Blueprint('main', __name__)
+
+
+@main.route('/git_update', methods=['POST'])
+def git_update():
+    if current_user.admin:
+        repo = git.Repo('./FinalProject')
+        origin = repo.remotes.origin
+        repo.create_head('main',
+                         origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+        origin.pull()
+        return '', 200
+    else:
+        return 404
 
 
 @main.route('/crypto', methods=['GET', 'POST'])
@@ -98,14 +112,7 @@ def sell(ticker):
 	if htmx:
 		return render_template('partials/price.html', ticker=ticker)
 	form = SellForm()
-	watchlist = WatchlistForm()
 	crypto = Crypto.query.filter_by(ticker=ticker).first()
-	if watchlist.validate_on_submit():
-		item = Watchlist(user_id=current_user.id, crypto_id=crypto.id)
-		db.session.add(item)
-		db.session.commit()
-		flash('Added to your watchlist', 'info')
-		return redirect(url_for('user_bp.watchlist'))
 	price = get_price(crypto.ticker)
 	holding_amount = current_holding_amount(crypto.id)
 	holding_value = value(price=float(price), quantity=holding_amount)
@@ -132,7 +139,6 @@ def sell(ticker):
 		'holding': holding_amount,
 		'form': form,
 		'price': price,
-		'w_form': watchlist
 	}
 	return render_template('sell.html', **context)
 

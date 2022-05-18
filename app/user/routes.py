@@ -124,20 +124,24 @@ def watchlist():
 	return render_template('watchlist.html', watchlist=watchlist)
 
 
-@user_bp.route('/watchlist/add/<int:crypto_id>', methods=['GET'])
-@login_required
-def add_to_watchlist(crypto_id):
-	item = Watchlist(user_id=current_user.id, crypto_id=crypto_id)
-	db.session.add(item)
-	db.session.commit()
-	flash('Added to your watchlist', 'info')
-	return redirect(url_for('user_bp.watchlist'))
-
-
 @user_bp.route('/watchlist/delete/<int:item_id>', methods=['GET'])
 @login_required
 def delete_from_watchlist(item_id):
 	delete_item = Watchlist.query.get(item_id)
 	delete_item.delete_from_watchlist()
 	flash('Removed from your watchlist', 'info')
+	return redirect(url_for('user_bp.watchlist'))
+
+
+@user_bp.route('/watchlist/add/<int:crypto_id>', methods=['GET'])
+@login_required
+def add_to_watchlist(crypto_id):
+	for item in current_user.watchlist:
+		if crypto_id == item.crypto_id:
+			flash('Already in your watchlist', 'info')
+			return redirect(url_for('user_bp.watchlist'))
+	item = Watchlist(user_id=current_user.id, crypto_id=crypto_id)
+	db.session.add(item)
+	db.session.commit()
+	flash('Added to your watchlist', 'info')
 	return redirect(url_for('user_bp.watchlist'))
