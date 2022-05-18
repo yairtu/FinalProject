@@ -10,24 +10,15 @@ import git
 
 main = Blueprint('main', __name__)
 
+
 @main.route('/git_update', methods=['POST'])
 def git_update():
-<<<<<<< HEAD
 	repo = git.Repo('./FinalProject')
 	origin = repo.remotes.origin
 	repo.create_head('main',
 					 origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
 	origin.pull()
 	return '', 200
-=======
-	if current_user.admin:
-		repo = git.Repo('./FinalProject')
-		origin = repo.remotes.origin
-		repo.create_head('main',
-						 origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
-		origin.pull()
-		return '', 200
->>>>>>> f28310e6b54801338d119ca458a7264f9491d342
 
 
 @main.route('/crypto', methods=['GET', 'POST'])
